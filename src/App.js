@@ -1,15 +1,24 @@
 import React from "react";
 
-import { Header, Container, Menu } from "semantic-ui-react";
+import { Header, Container } from "semantic-ui-react";
 import "./App.css";
-import TabBarcontainer from "./features/tab/tabbar-container";
+
+import TabBarcontainer from "features/tab/tabbar-container";
+import UnitInfo from "features/unitInfo/unitInfo";
+import Pilots from "features/Pilots/Pilots";
+import Mechs from "features/mechs/mechs";
+import UnitOrganization from "features/unitOrganization/unitOrganization";
 
 function App() {
   const tabs = [
-    { name: "unitInfo", label: "Unit Info" },
-    { name: "pilots", label: "Pilots" },
-    { name: "mechs", label: "Mechs" },
-    { name: "unitOrganization", label: "Unit Organization" },
+    { name: "unitInfo", label: "Unit Info", component: UnitInfo },
+    { name: "pilots", label: "Pilots", component: Pilots },
+    { name: "mechs", label: "Mechs", component: Mechs },
+    {
+      name: "unitOrganization",
+      label: "Unit Organization",
+      component: UnitOrganization,
+    },
   ];
 
   return (
