@@ -3,7 +3,7 @@ import React from "react";
 import { Header, Container } from "semantic-ui-react";
 import "./App.css";
 
-import TabBarcontainer from "features/tab/tabbar-container";
+import TabBar from "features/tab/tabbar";
 import UnitInfo from "features/unitInfo/unitInfo";
 import Pilots from "features/Pilots/Pilots";
 import Mechs from "features/mechs/mechs";
@@ -29,7 +29,7 @@ function App() {
         </Header>
       </div>
       <Container>
-        <TabBarcontainer tabs={tabs} size="massive" />
+        <TabBar tabs={tabs} size="massive" />
       </Container>
     </div>
   );

@@ -3,9 +3,22 @@ import { Menu } from "semantic-ui-react";
 import ToggleDisplay from "../../common/componnts/toggle-display";
 import Tab from "./tab";
 
-const Tabbar = (props) => {
+import { connect } from "react-redux";
+import { selectCurrentTab } from "features/tab/tabsSelector";
+import { selectTab } from "features/tab/tabsAction";
+
+const mapState = (state) => {
+  console.log(state);
+  const currentTab = selectCurrentTab(state);
+  return { currentTab };
+};
+
+const actions = { onTabClick: selectTab };
+
+export const TabBar = (props) => {
   const { tabs, currentTab, onTabClick, ...otherProps } = props;
 
+  console.log(currentTab);
   const tabItems = tabs.map((tabInfo) => {
     const { name, label } = tabInfo;
 
@@ -15,7 +28,9 @@ const Tabbar = (props) => {
         name={name}
         label={label}
         active={currentTab === name}
-        onClick={onTabClick}
+        onClick={(tabName) => {
+          onTabClick(tabName);
+        }}
       />
     );
   });
@@ -40,4 +55,4 @@ const Tabbar = (props) => {
   );
 };
 
-export default Tabbar;
+export default connect(mapState, actions)(TabBar);
